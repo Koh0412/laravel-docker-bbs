@@ -7,6 +7,6 @@
     <title>スレッド一覧</title>
 </head>
 <body>
-
+    <a href="{{ route('threads.show', ['id' => 1]) }}">test</a>
 </body>
 </html>

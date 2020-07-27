@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'threads'], function () {
-    Route::get('/', 'ThreadsController@index');
-    Route::get('/{id}', 'ThreadsController@show');
+Route::group(['prefix' => 'threads', 'as' => 'threads.'], function () {
+    Route::get('/', 'ThreadsController@index')->name('index');
+    Route::get('/{id}', 'ThreadsController@show')->name('show');
 });
