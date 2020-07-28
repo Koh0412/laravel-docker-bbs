@@ -46,7 +46,7 @@ class ThreadsController extends Controller
         ];
 
         $thread->newRecord($properties);
-        return redirect()->route('top');
+        return redirect()->route('threads.index');
     }
 
     public function delete()

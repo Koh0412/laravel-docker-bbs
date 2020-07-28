@@ -7,6 +7,7 @@
     <title>スレッド | {{ $thread->title }}</title>
 </head>
 <body>
-
+    <a href="{{ route('threads.index') }}">一覧に戻る</a>
+    <h3>スレッド: {{ $thread->title }}</h3>
 </body>
 </html>
