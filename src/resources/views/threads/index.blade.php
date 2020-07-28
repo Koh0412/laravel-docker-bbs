@@ -7,6 +7,16 @@
     <title>スレッド一覧</title>
 </head>
 <body>
-    <a href="{{ route('threads.show', ['id' => 1]) }}">test</a>
+    <form action="/threads" method="post">
+        <div>スレッドの作成</div>
+        <div>
+            @csrf
+            <input type="text" name="title" placeholder="スレッドタイトル">
+            <input type="submit" value="作成">
+        </div>
+    </form>
+    @foreach ($threads as $thread)
+        <a href="{{ route('threads.show', ['id' => $thread->id]) }}">{{ $thread->title }}</a>
+    @endforeach
 </body>
 </html>

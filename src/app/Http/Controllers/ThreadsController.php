@@ -2,23 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Thread;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ThreadsController extends Controller
 {
-    public function index()
+    /**
+     * スレッド一覧
+     *
+     * @return View
+     */
+    public function index(): View
     {
-        return view('threads.index');
+        $threads = Thread::all();
+        return view('threads.index', ['threads' => $threads]);
     }
 
-    public function show(int $id)
+    /**
+     * 各スレッドページ
+     *
+     * @param integer $id
+     * @return View
+     */
+    public function show(int $id): View
     {
-        return view('threads.show', ['id' => $id]);
+        $thread = Thread::find($id);
+        return view('threads.show', ['thread' => $thread]);
     }
 
-    public function create()
+    /**
+     * スレッドの作成
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function create(Request $request): RedirectResponse
     {
-        //
+        $thread = new Thread();
+        $properties = [
+            'title' => $request->title
+        ];
+
+        $thread->newRecord($properties);
+        return redirect()->route('top');
     }
 
     public function delete()

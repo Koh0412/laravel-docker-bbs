@@ -11,13 +11,15 @@
 |
 */
 
+use App\Http\Controllers\ThreadsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('top');
 
 Route::group(['prefix' => 'threads', 'as' => 'threads.'], function () {
-    Route::get('/', 'ThreadsController@index')->name('index');
-    Route::get('/{id}', 'ThreadsController@show')->name('show');
+    Route::get('/', ThreadsController::getControllerName() . '@index')->name('index');
+    Route::get('/{id}', ThreadsController::getControllerName() . '@show')->name('show');
+    Route::post('/', ThreadsController::getControllerName() . '@create')->name('create');
 });

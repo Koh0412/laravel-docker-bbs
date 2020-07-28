@@ -10,4 +10,14 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    /**
+     * return controller name
+     *
+     * @return string
+     */
+    public static function getControllerName(): string
+    {
+        return class_basename(static::class);
+    }
 }
