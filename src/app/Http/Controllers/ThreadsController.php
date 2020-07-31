@@ -40,12 +40,11 @@ class ThreadsController extends Controller
      */
     public function create(Request $request): RedirectResponse
     {
-        $thread = new Thread();
         $properties = [
             'title' => $request->title
         ];
 
-        $thread->newRecord($properties);
+        Thread::newRecord($properties);
         return redirect()->route('threads.index');
     }
 

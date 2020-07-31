@@ -13,9 +13,10 @@ class Thread extends Model
      * @param array $data
      * @return void
      */
-    public function newRecord(array $data): void
+    public static function newRecord(array $data): void
     {
-        $this->title = $data['title'];
-        $this->save();
+        $thread = new Thread();
+        $thread->title = $data['title'];
+        $thread->save();
     }
 }
