@@ -11,6 +11,7 @@
 |
 */
 
+use App\Http\Controllers\ThreadCommentsController;
 use App\Http\Controllers\ThreadsController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,8 @@ Route::group(['prefix' => 'threads', 'as' => 'threads.'], function () {
     Route::get('/', ThreadsController::getControllerName() . '@index')->name('index');
     Route::get('/{id}', ThreadsController::getControllerName() . '@show')->name('show');
     Route::post('/', ThreadsController::getControllerName() . '@create')->name('create');
+});
+
+Route::group(['prefix' => 'thread_comments', 'as' => 'thread_comments.'], function () {
+    Route::post('/', ThreadCommentsController::getControllerName() . '@create')->name('create');
 });

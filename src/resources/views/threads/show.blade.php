@@ -9,5 +9,17 @@
 <body>
     <a href="{{ route('threads.index') }}">一覧に戻る</a>
     <h3>スレッド: {{ $thread->title }}</h3>
+    <form action="{{ route('thread_comments.create') }}" method="post">
+        @csrf
+        <div>
+            <input type="text" name="name">
+        </div>
+        <div>
+            <textarea name="contents" id="comment-contents" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <input type="submit" value="送信">
+        </div>
+    </form>
 </body>
 </html>
