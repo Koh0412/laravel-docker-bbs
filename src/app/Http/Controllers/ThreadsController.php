@@ -28,8 +28,9 @@ class ThreadsController extends Controller
      */
     public function show(int $id): View
     {
+        /** @var Thread $thread */
         $thread = Thread::find($id);
-        return view('threads.show', ['thread' => $thread]);
+        return view('threads.show', ['thread' => $thread, 'comments' => $thread->getComments()]);
     }
 
     /**

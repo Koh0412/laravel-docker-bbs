@@ -20,4 +20,9 @@ class Controller extends BaseController
     {
         return class_basename(static::class);
     }
+
+    public function getUrlParameter(string $param)
+    {
+        return request()->route($param);
+    }
 }

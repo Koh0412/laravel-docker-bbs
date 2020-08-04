@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Thread extends Model
 {
@@ -18,5 +20,15 @@ class Thread extends Model
         $thread = new Thread();
         $thread->title = $data['title'];
         $thread->save();
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(ThreadComment::class);
+    }
+
+    public function getComments(): Collection
+    {
+        return $this->comments;
     }
 }

@@ -9,7 +9,15 @@
 <body>
     <a href="{{ route('threads.index') }}">一覧に戻る</a>
     <h3>スレッド: {{ $thread->title }}</h3>
-    <form action="{{ route('thread_comments.create') }}" method="post">
+    <ul>
+        @foreach ($comments as $comment)
+            <li>
+                <span>{{ $comment->name }}</span>
+                <span>{{ $comment->contents }}</span>
+            </li>
+        @endforeach
+    </ul>
+    <form action="{{ route('threads.create_comment', ['id' => $thread->id]) }}" method="post">
         @csrf
         <div>
             <input type="text" name="name">
