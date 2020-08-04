@@ -21,6 +21,12 @@ class Controller extends BaseController
         return class_basename(static::class);
     }
 
+    /**
+     * get value from request url by using $param
+     *
+     * @param string $param
+     * @return void
+     */
     public function getUrlParameter(string $param)
     {
         return request()->route($param);

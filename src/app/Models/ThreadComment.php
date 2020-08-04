@@ -24,6 +24,11 @@ class ThreadComment extends Model
         $threadComment->save();
     }
 
+    /**
+     * スレッドへのリレーションを作成
+     *
+     * @return BelongsTo
+     */
     public function thread(): BelongsTo
     {
         return $this->belongsTo(Thread::class);

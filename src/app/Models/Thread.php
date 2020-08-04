@@ -22,11 +22,21 @@ class Thread extends Model
         $thread->save();
     }
 
+    /**
+     * スレッドコメントへのリレーションを作成
+     *
+     * @return HasMany
+     */
     public function comments(): HasMany
     {
         return $this->hasMany(ThreadComment::class);
     }
 
+    /**
+     * 紐づいたスレッドコメントの取得
+     *
+     * @return Collection
+     */
     public function getComments(): Collection
     {
         return $this->comments;

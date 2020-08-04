@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\ThreadComment;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ThreadCommentsController extends Controller
 {
-    public function create(Request $request)
+    /**
+     * スレッドコメントの作成
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function create(Request $request): RedirectResponse
     {
-        // 仮
         $properties = [
             'name' => $request->name,
             'contents' => $request->contents,
